@@ -34,6 +34,7 @@ return new class extends Migration
             $table->id();
             $table->enum('tipoCompetencia', ['generica', 'especifica']);
             $table->string('nombre');
+            $table->string('color');
             $table->timestamps();
         });
         Schema::create('periodos', function (Blueprint $table) {
@@ -52,20 +53,20 @@ return new class extends Migration
             $table->text('ubicacion');
             $table->timestamps();
         });
+        Schema::create('horarios', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('docente_id')->constrained('docentes');
+            $table->foreignId('periodo_id')->constrained('periodos');
+            $table->timestamps();
+        });
         Schema::create('bloques', function (Blueprint $table) {
             $table->id();
             $table->string('dia');
             $table->integer('hora_inicio');
-            $table->integer('hora_fin');
+            $table->integer('duracion');
             $table->foreignId('competencia_id')->constrained('competencias');
-            $table->timestamps();
-        });
-        Schema::create('horarios', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('docente_id')->constrained('docentes');
-            $table->foreignId('bloque_id')->constrained('bloques');
             $table->foreignId('ambiente_id')->constrained('ambientes');
-            $table->foreignId('periodo_id')->constrained('periodos');
+            $table->foreignId('horario_id')->constrained('horarios');
             $table->timestamps();
         });
         Schema::create('competencia_programa', function (Blueprint $table) {

@@ -15,17 +15,13 @@ class Horario extends Model
     public function docente() {
         return $this->belongsTo(Docente::class);
     }
-    public function ambiente() {
-        return $this->belongsTo(Ambiente::class);
-    }
-    public function bloque() {
-        return $this->belongsTo(Bloque::class);
+    public function bloques() {
+        return $this->hasMany(Bloque::class);
     }
 
     protected $fillable = [
+        'id',
         'periodo_id',
         'docente_id',
-        'ambiente_id',
-        'bloque_id',
     ];
 }

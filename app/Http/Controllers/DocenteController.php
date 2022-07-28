@@ -38,7 +38,10 @@ class DocenteController extends Controller
 
     function read($docente_id) {
         $docente = Docente::find($docente_id);
-        return view('docentes.info_docente', ['docente' => $docente]);
+        return view('docentes.info_docente', [
+            'docente' => $docente,
+            'horarios' => $docente->horarios,
+        ]);
     }
 
     function form_actualizar($docente) {

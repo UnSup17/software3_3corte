@@ -51,3 +51,6 @@ Route::get('/horario/crear', [App\Http\Controllers\HorarioController::class, 'fo
 ->name('form_crear_horario');
 Route::post('/crear_horario', [App\Http\Controllers\HorarioController::class, 'crear'])->middleware(['auth'])
 ->name('crear_horario');
+
+Route::get('/horario/{id}', [App\Http\Controllers\HorarioController::class, 'read_horario'])->middleware(['auth'])
+->name('ver_horario');

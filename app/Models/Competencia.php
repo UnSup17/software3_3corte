@@ -20,5 +20,6 @@ class Competencia extends Model
     protected $fillable = [
         'tipoCompetencia',
         'nombre',
+        'color',
     ];
 }

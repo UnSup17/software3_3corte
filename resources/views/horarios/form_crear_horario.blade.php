@@ -13,7 +13,7 @@
                         <form method="POST" action="{{ route('crear_horario') }}">
                             @csrf
                             <div class="form-floating mb-3">
-                                <select class="form-select" name="tipoID">
+                                <select class="form-select" name="periodo">
                                     @foreach ($periodos as $periodo)
                                         <option value="{{ $periodo->id }}">{{ $periodo->nombre }}</option>
                                     @endforeach
@@ -21,7 +21,7 @@
                                 <label>Periodos</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <select class="form-select" name="tipoID">
+                                <select class="form-select" name="docente">
                                     @foreach ($docentes as $docente)
                                         <option value="{{ $docente->id }}">{{ $docente->nombre.' '.$docente->apellido }}</option>
                                     @endforeach
@@ -31,9 +31,9 @@
                             <div class="d-flex justify-content-around">
                                 <div class="w-100 mr-2">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" name="tipoID">
+                                        <select class="form-select" name="dia">
                                             @foreach ($dias as $dia)
-                                                <option value="{{ array_search($dia, $dias) }}">{{ $dia }}</option>
+                                                <option value="{{ $dia }}">{{ $dia }}</option>
                                             @endforeach
                                         </select>
                                         <label>Día</label>
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="w-100 mx-2">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" name="tipoID">
+                                        <select class="form-select" name="hora_inicio">
                                             @for($i = 7; $i < 22; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
@@ -51,17 +51,17 @@
                                 </div>
                                 <div class="w-100 ml-2">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" name="tipoID">
-                                            @for($i = 7; $i < 22; $i++)
+                                        <select class="form-select" name="duracion">
+                                            @for($i = 1; $i <= 10; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                         </select>
-                                        <label>Hora fin</label>
+                                        <label>Duracion</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <select class="form-select" name="tipoID">
+                                <select class="form-select" name="competencia">
                                     @foreach ($competencias as $competencia)
                                         <option value="{{ $competencia->id }}">{{ $competencia->nombre }}</option>
                                     @endforeach
@@ -69,7 +69,7 @@
                                 <label>Competencia</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <select class="form-select" name="tipoID">
+                                <select class="form-select" name="ambiente">
                                     @foreach ($ambientes as $ambiente)
                                         <option value="{{ $ambiente->id }}">{{ $ambiente->nombre }}</option>
                                     @endforeach
@@ -77,7 +77,7 @@
                                 <label>Ambiente</label>
                             </div>
                             <div class="input-group">
-                                <input class="form-control border border-success" type="submit" value="Crear docente">
+                                <input class="form-control border border-success" type="submit" value="Asignar bloque horario">
                             </div>
                         </form>
                     </section>
