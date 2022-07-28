@@ -49,7 +49,8 @@
                                                 @else
                                                     <td rowspan="{{ $horario[$dia.$hora]->duracion }}" style="vertical-align: middle; word-wrap: break-word;
                                                         background: {{ $horario[$dia.$hora]->competencia->color }}">
-                                                        {{ $horario[$dia.$hora]->competencia->nombre }}
+                                                        {{ $horario[$dia.$hora]->competencia->nombre }} <br>
+                                                        {{ $horario[$dia.$hora]->ambiente->nombre }}
                                                     </td>
                                                 @endif
                                             @endforeach
